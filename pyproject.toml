@@ -134,3 +134,9 @@ known-third-party = ["sqlmodel", "sqlalchemy", "pydantic", "fastapi"]
 [tool.ruff.lint.pyupgrade]
 # Preserve types, even if a file imports `from __future__ import annotations`.
 keep-runtime-typing = true
+
+[tool.pytest.ini_options]
+# Only collect tests from the tests/ directory by default.
+# This prevents collection errors from docs_src/ where multiple tutorial variants
+# define the same SQLModel table names (like 'hero') and conflict at import time.
+testpaths = ["tests"]
